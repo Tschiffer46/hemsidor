@@ -1,4 +1,11 @@
-name: Deploy
+# Required GitHub Secrets (same names used across all ATM AB deployments):
+#   SERVER_HOST     - IP address or hostname of the Hetzner server
+#   SERVER_USER     - SSH username (deploy)
+#   SERVER_SSH_KEY  - Private SSH key content for authentication
+#
+# To add secrets: GitHub repo → Settings → Secrets and variables → Actions → New repository secret
+
+name: Deploy to Hetzner
 
 on:
   push:
@@ -10,9 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Setup Node.js
@@ -27,21 +33,25 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Setup SSH key
+      - name: Setup SSH
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.SERVER_SSH_KEY }}" > ~/.ssh/deploy_key
-          chmod 600 ~/.ssh/deploy_key
-          ssh-keyscan -H "${{ secrets.SERVER_HOST }}" >> ~/.ssh/known_hosts
+          echo "${{ secrets.SERVER_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
 
       - name: Create remote directory
         run: |
-          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes \
+          ssh -i ~/.ssh/id_ed25519 \
             ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} \
             "mkdir -p ~/hosting/sites/hemsidor/dist"
 
-      - name: Deploy via rsync
+      - name: Deploy to server
         run: |
-          rsync -avz --delete -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes" \
-            ./dist/ \
-            ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:~/hosting/sites/hemsidor/dist/
+          rsync -avz --delete \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='README.md' \
+            --exclude='node_modules' \
+            -e "ssh -i ~/.ssh/id_ed25519" \
+            ./dist/ ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:~/hosting/sites/hemsidor/dist/
