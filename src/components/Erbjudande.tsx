@@ -27,7 +27,7 @@ export default function Erbjudande() {
             <p className="text-sm font-semibold uppercase tracking-wider opacity-80 mb-2">Webbpaketet</p>
             <div className="flex items-baseline justify-center gap-3 mb-1">
               <span className="text-4xl font-bold">6 995 kr</span>
-              <span className="opacity-80">engångskostnad</span>
+              <span className="opacity-80">+ moms engångskostnad</span>
             </div>
             <div className="flex items-center justify-center gap-2 mt-2">
               <span className="text-2xl font-semibold">+ 495 kr/mån</span>
