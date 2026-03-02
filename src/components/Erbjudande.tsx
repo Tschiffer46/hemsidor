@@ -32,7 +32,7 @@ export default function Erbjudande() {
             <div className="flex items-center justify-center gap-2 mt-2">
               <span className="text-2xl font-semibold">+ 495 kr/mån</span>
             </div>
-            <p className="text-sm opacity-70 mt-1">drift, support &amp; uppdateringar</p>
+            <p className="text-sm opacity-70 mt-1">+ moms för drift, support &amp; uppdateringar</p>
           </div>
 
           {/* Card body */}
