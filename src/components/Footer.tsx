@@ -13,12 +13,6 @@ export default function Footer() {
             >
               agiletransition.se
             </a>
-            <a
-              href="mailto:thomas@agiletransition.se"
-              className="hover:text-white transition-colors"
-            >
-              thomas@agiletransition.se
-            </a>
           </div>
         </div>
 

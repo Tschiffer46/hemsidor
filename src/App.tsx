@@ -4,6 +4,7 @@ import Erbjudande from './components/Erbjudande'
 import HurFungerar from './components/HurFungerar'
 import VarforOss from './components/VarforOss'
 import OmOss from './components/OmOss'
+import Referenser from './components/Referenser'
 import Kontakt from './components/Kontakt'
 import Footer from './components/Footer'
 
@@ -17,6 +18,7 @@ function App() {
         <HurFungerar />
         <VarforOss />
         <OmOss />
+        <Referenser />
         <Kontakt />
       </main>
       <Footer />
