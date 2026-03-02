@@ -15,6 +15,7 @@ export default function Nav() {
     { label: 'Så fungerar det', href: '#hur-fungerar-det' },
     { label: 'Varför oss', href: '#varfor-oss' },
     { label: 'Om oss', href: '#om-oss' },
+    { label: 'Referenser', href: '#referenser' },
     { label: 'Kontakt', href: '#kontakt' },
   ]
 
