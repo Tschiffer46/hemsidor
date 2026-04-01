@@ -35,7 +35,7 @@ export default function Nav() {
           </a>
 
           {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden lg:flex items-center gap-6">
             {links.map((link) => (
               <a
                 key={link.href}
@@ -49,7 +49,7 @@ export default function Nav() {
             ))}
             <a
               href="#kontakt"
-              className="ml-2 px-4 py-2 bg-h-accent hover:bg-h-accent-dark text-white text-sm font-semibold rounded-lg transition-colors"
+              className="ml-2 px-5 py-2.5 bg-h-accent hover:bg-h-accent-dark text-white text-sm font-semibold rounded-lg transition-colors"
             >
               Kontakta oss
             </a>
@@ -57,7 +57,7 @@ export default function Nav() {
 
           {/* Hamburger */}
           <button
-            className={`md:hidden p-2 rounded ${scrolled ? 'text-h-mid' : 'text-white'}`}
+            className={`lg:hidden p-2 rounded ${scrolled ? 'text-h-mid' : 'text-white'}`}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Öppna meny"
           >
@@ -76,7 +76,7 @@ export default function Nav() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white shadow-lg">
+        <div className="lg:hidden bg-white shadow-lg">
           <div className="px-4 pt-2 pb-4 flex flex-col gap-2">
             {links.map((link) => (
               <a

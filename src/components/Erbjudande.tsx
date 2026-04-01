@@ -1,3 +1,5 @@
+import { Clock } from 'lucide-react'
+
 const packages = [
   {
     name: 'Webbpaketet',
@@ -56,10 +58,10 @@ export default function Erbjudande() {
           {packages.map((pkg) => (
             <div
               key={pkg.name}
-              className={`relative rounded-2xl overflow-hidden shadow-xl border flex flex-col ${
+              className={`relative rounded-2xl overflow-hidden border flex flex-col transition-transform ${
                 pkg.highlighted
-                  ? 'ring-2 ring-h-accent border-h-accent/20'
-                  : 'border-gray-100'
+                  ? 'ring-2 ring-h-accent border-h-accent/20 shadow-2xl scale-[1.03]'
+                  : 'shadow-lg border-gray-100'
               }`}
             >
               {pkg.badge && (
@@ -114,7 +116,7 @@ export default function Erbjudande() {
                 </ul>
 
                 <div className="flex items-center gap-2 text-h-mid text-sm mb-6 bg-h-light rounded-lg px-4 py-3">
-                  <span>⏱</span>
+                  <Clock className="w-4 h-4 text-h-teal flex-shrink-0" />
                   <span>
                     Leveranstid:{' '}
                     <strong className="text-h-dark">{pkg.delivery}</strong> från

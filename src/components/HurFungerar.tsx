@@ -1,25 +1,28 @@
-const steps = [
+import { MessageCircle, PenLine, Code, Rocket } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
+
+const steps: { number: number; icon: LucideIcon; title: string; description: string }[] = [
   {
     number: 1,
-    icon: '💬',
+    icon: MessageCircle,
     title: 'Kontakt',
     description: 'Vi pratar om din verksamhet, dina mål och vad du vill kommunicera. Inget tekniskt krångel.',
   },
   {
     number: 2,
-    icon: '✏️',
+    icon: PenLine,
     title: 'Design & innehåll',
     description: 'Du levererar text och bilder (eller vi hjälper dig). Vi sätter ihop ett förslag på layout.',
   },
   {
     number: 3,
-    icon: '⚙️',
+    icon: Code,
     title: 'Utveckling',
     description: 'Vi bygger din sajt med modern teknik – snabb, säker och mobilanpassad från grunden.',
   },
   {
     number: 4,
-    icon: '🚀',
+    icon: Rocket,
     title: 'Lansering & drift',
     description: 'Din sajt går live på din domän. Vi sköter hosting, SSL och löpande uppdateringar.',
   },
@@ -37,20 +40,25 @@ export default function HurFungerar() {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {steps.map((step, index) => (
-            <div key={step.number} className="relative flex flex-col items-center text-center">
-              {/* Connector line */}
-              {index < steps.length - 1 && (
-                <div className="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-h-teal/20 z-0" />
-              )}
-              <div className="relative z-10 w-16 h-16 rounded-full bg-h-teal flex items-center justify-center text-white font-bold text-xl shadow-md mb-4">
-                {step.number}
+          {steps.map((step, index) => {
+            const Icon = step.icon
+            return (
+              <div key={step.number} className="relative flex flex-col items-center text-center">
+                {/* Connector line */}
+                {index < steps.length - 1 && (
+                  <div className="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-h-teal/20 z-0" />
+                )}
+                <div className="relative z-10 w-16 h-16 rounded-full bg-h-teal flex items-center justify-center text-white font-bold text-xl shadow-md mb-4">
+                  {step.number}
+                </div>
+                <div className="mb-3">
+                  <Icon className="w-7 h-7 text-h-teal" strokeWidth={1.75} />
+                </div>
+                <h3 className="font-semibold text-h-dark text-lg mb-2">{step.title}</h3>
+                <p className="text-h-mid text-sm leading-relaxed">{step.description}</p>
               </div>
-              <div className="text-3xl mb-3">{step.icon}</div>
-              <h3 className="font-semibold text-h-dark text-lg mb-2">{step.title}</h3>
-              <p className="text-h-mid text-sm leading-relaxed">{step.description}</p>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>

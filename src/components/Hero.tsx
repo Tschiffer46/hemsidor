@@ -2,7 +2,7 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center bg-gradient-to-br from-h-teal-dark via-h-teal to-h-teal-light">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-snug mb-6">
           Din verksamhet förtjänar<br className="hidden sm:block" /> en modern hemsida
         </h1>
         <p className="text-lg sm:text-xl text-white/85 max-w-2xl mx-auto mb-10">
